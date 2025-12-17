@@ -2,66 +2,59 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <!-- Cấu hình Viewport chuẩn cho Mobile, chặn zoom để thao tác chạm mượt hơn -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <!-- Tiêu đề & Meta tags cho Messenger/Zalo -->
-    <title>🎄 For My Beloved Bao ❤️</title>
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="description" content="Chúc mừng sinh nhật tuổi 21 của Bảo. Một món quà nhỏ từ Bi.">
+
+    <title>🎄 Happy Birthday 21st - Bảo ❤️</title>
     <meta property="og:title" content="Gửi Công chúa Bảo 👸">
     <meta property="og:description" content="Có một món quà nhỏ dành cho tuổi 21 của em nè! Mở ngay nhé ❤️">
-    <meta property="og:image" content="us.jpg"> <!-- Ảnh đại diện khi gửi link -->
+    <meta property="og:image" content="https://ibb.co/8gGYd3c5">
+    <meta property="og:type" content="website">
 
-    <!-- CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Font chữ dễ thương -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎁</text></svg>">
 </head>
 <body>
 
-    <!-- === PHẦN 1: CÁC HIỆU ỨNG NỀN & DECOR === -->
 
-    <!-- Màn hình chờ (Loading Screen) - Cute -->
     <div id="loading">
         <div class="heart-loader">❤️</div>
         <p>Đang gói quà cho Bảo...</p>
     </div>
 
-    <!-- Nền trời sao & Đêm -->
     <div class="stars"></div>
     <div class="twinkling"></div>
     <div id="nightOverlay"></div>
 
-    <!-- Hiệu ứng Tuyết & Mưa tim -->
     <canvas id="snowCanvas"></canvas>
-    <div id="heartRainContainer"></div> <!-- Container chứa mưa tim -->
+    <div id="heartRainContainer"></div>
 
-    <!-- Dây đèn nháy (Fairy Lights) - Thêm không khí Noel -->
-    <div class="light-string">
+    <div class="light-string" aria-hidden="true">
         <ul>
             <li></li><li></li><li></li><li></li><li></li><li></li>
             <li></li><li></li><li></li><li></li><li></li><li></li>
         </ul>
     </div>
 
-    <!-- Trình phát nhạc (Đĩa than) -->
-    <div class="music-control" onclick="toggleMusic()">
+    <div class="music-control" onclick="toggleMusic()" role="button" tabindex="0" aria-label="Bật tắt nhạc">
         <div class="vinyl-record">
             <div class="vinyl-center"></div>
         </div>
-        <!-- Tooltip nhỏ nhắc bật nhạc -->
         <div class="music-hint">Em bé nhớ bật nhạc nha 🔊</div>
     </div>
 
-    <audio id="bgMusic" loop>
+    <audio id="bgMusic" loop preload="auto">
         <source src="music.mp3" type="audio/mpeg">
     </audio>
 
 
-    <!-- === PHẦN 2: NỘI DUNG CHÍNH === -->
     <main class="wrapper">
         
-        <!-- SCENE 1: QUẢ CẦU TUYẾT (GLASS GLOBE) -->
         <section id="scene1" class="scene active">
             <div class="globe-container">
                 <div class="glass-globe">
@@ -75,7 +68,6 @@
                         </button>
                     </div>
                 </div>
-                <!-- Đế quả cầu -->
                 <div class="globe-base">
                     <div class="base-top"></div>
                     <div class="base-bottom"></div>
@@ -83,19 +75,16 @@
             </div>
         </section>
 
-        <!-- SCENE 2: CHAT & NẾN -->
         <section id="scene2" class="scene">
-            <!-- Khu vực Chat -->
             <div class="chat-section">
                 <div class="santa-avatar">
-                    <img src="santa.png" alt="Santa">
+                    <img src="santa.png" alt="Santa Claus" width="50" height="50">
                 </div>
                 <div class="chat-bubble" id="typingText"></div>
             </div>
 
-            <!-- Khu vực Nến -->
             <div class="candle-section">
-                <div id="candle" class="candle">
+                <div id="candle" class="candle" role="button" tabindex="0">
                     <div class="flame"></div>
                     <div class="wick"></div>
                     <div class="wax"></div>
@@ -110,36 +99,43 @@
             </div>
         </section>
 
-<!-- SCENE 3: LÁ THƯ & ẢNH (Phiên bản Lãng mạn & Hạnh phúc) -->
         <section id="scene3" class="scene">
             <div class="letter-container">
                 <div class="paper">
-                    <!-- Ảnh Polaroid -->
                     <div class="polaroid">
-                        <img src="us.jpg" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=400&auto=format&fit=crop'" alt="Our Moment">
+                        <img src="us.jpg" 
+                             loading="lazy"
+                             onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=400&auto=format&fit=crop'" 
+                             alt="Kỷ niệm của chúng mình">
                         <div class="tape"></div>
                         <div class="sticker">❤️</div>
                     </div>
 
-                    <!-- Tiêu đề -->
                     <h2 class="letter-head">Gửi Bảo, mùa đông ấm áp của anh...</h2>
                     
-                    <div class="letter-body">
+                    <article class="letter-body">
                         <p>
-                            Bảo à, người ta thường bảo sinh nhật gần Giáng sinh thì thiệt thòi lắm, vì niềm vui riêng dễ bị hòa tan vào không khí lễ hội chung.
+                            Hôm nay là một ngày đặc biệt, không chỉ vì đó là Giáng sinh, mà vì đó là sinh nhật em - ngày một người quan trọng với anh có thêm một tuổi mới để trưởng thành, để mạnh mẽ hơn và để tiếp tục mỉm cười với cuộc sống.
                         </p>
                         <p>
-                            Nhưng anh lại nghĩ khác. Em nhìn xem, cả thế giới đang giăng đèn kết hoa, phố phường lấp lánh và những bản nhạc vui tươi vang lên khắp chốn. Anh tin rằng, đó không chỉ là để đón Giáng sinh đâu, mà là cả thế giới đang vô tình giúp anh chuẩn bị một bữa tiệc lung linh nhất để chào đón tuổi 21 rực rỡ của em đấy.
+                            Anh chúc em luôn khỏe mạnh, bình an và giữ được sự ấm áp trong tim dù ngoài kia có bao nhiêu bộn bề. Hy vọng những điều em đang mong chờ sẽ đến đúng lúc, những cố gắng thầm lặng của em sẽ được đền đáp xứng đáng.
                         </p>
                         <p>
-                            Cảm ơn định mệnh đã mang em đến vào những ngày lạnh giá này, để anh hiểu thế nào là mùa đông không lạnh. Với anh, em chính là món quà Giáng sinh tuyệt vời nhất mà thượng đế đã ưu ái dành tặng riêng cho anh.
+                            Anh không hứa những điều quá lớn lao, chỉ mong trong những năm tháng phía trước, anh vẫn có thể ở bên em, lắng nghe em, cùng em chia sẻ niềm vui và cả những lúc mệt mỏi. Nếu có khó khăn, mong em nhớ rằng em không phải bước đi một mình.
                         </p>
                         <p>
-                            Chúc mừng sinh nhật công chúa. Tuổi mới rạng ngời và luôn tay trong tay nhé!
+                            Chúc em tuổi 22 nhiều nụ cười hơn hôm qua, nhiều niềm tin hơn hôm nay và đủ bình yên để tiếp tục là chính mình. Chúc mừng sinh nhật em.
                         </p>
-                    </div>
+                        
+                        <div class="verse">
+                            Thêm một năm nữa em bước qua<br>
+                            Mang theo hy vọng bỏ lo xa<br>
+                            Nếu có lúc đường đời chông chênh quá<br>
+                            Cứ nắm tay anh mình cùng qua
+                        </div>
+                    </article>
                     
-                    <p class="sign">Yêu em và thương em,<br>Bi.</p>
+                    <div class="sign">Yêu em và thương em,<br><strong>Bi.</strong></div>
                 </div>
                 
                 <button id="nextToGiftBtn" class="christmas-btn secondary">
@@ -148,14 +144,12 @@
             </div>
         </section>
 
-        <!-- SCENE 4: VOUCHERS -->
         <section id="scene4" class="scene">
             <h2 class="gift-header">Chọn quà đi nào!</h2>
             <div class="rope"></div>
 
             <div class="stockings-wrapper">
-                <!-- Vớ 1 -->
-                <div class="stocking-group" onclick="openGift(1)">
+                <div class="stocking-group" onclick="openGift(1)" role="button" tabindex="0">
                     <div class="hook"></div>
                     <div class="sock bounce">🧦</div>
                     <div class="voucher" id="gift1">
@@ -164,18 +158,16 @@
                     </div>
                 </div>
 
-                <!-- Vớ 2 -->
-                <div class="stocking-group" onclick="openGift(2)">
+                <div class="stocking-group" onclick="openGift(2)" role="button" tabindex="0">
                     <div class="hook"></div>
                     <div class="sock bounce delay-1">🧦</div>
                     <div class="voucher" id="gift2">
-                        <h3>Gói "Healing" 💆‍♀️</h3>
-                        <p>Massage vai gáy, gội đầu, lắng nghe than thở. Hạn dùng: Cả đời.</p>
+                        <h3>Bắt Trọn Nụ Cười 📸</h3>
+                        <p>Chụp hình siêu đẹp, luôn có hình đẹp sau mỗi chuyến đi. Hạn dùng: Cả đời.</p>
                     </div>
                 </div>
 
-                <!-- Vớ 3 -->
-                <div class="stocking-group" onclick="openGift(3)">
+                <div class="stocking-group" onclick="openGift(3)" role="button" tabindex="0">
                     <div class="hook"></div>
                     <div class="sock bounce delay-2">🧦</div>
                     <div class="voucher" id="gift3">
@@ -193,7 +185,6 @@
 
     </main>
 
-    <!-- Script -->
     <script src="script.js"></script>
 </body>
 </html>
